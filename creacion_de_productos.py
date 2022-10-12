@@ -44,5 +44,16 @@ class Producto: #La clase Producto permite crear un producto con toda su informa
             print("En vitrina no hay unidades suficientes para llevar a la bodega.")      
             
 class Caja:
-    def __init__ (self, numero_de_caja, efectivo_inicial)
- 
+     def __init__ (self, numero_de_caja, efectivo_inicial):
+        self.num_caja= numero_de_caja
+        self.efectivo_inicial = efectivo_inicial
+        self.efectivo_total = efectivo_inicial
+        
+    def venta(self,  producto):
+        producto.und -= 1
+        if producto.und_vitrina > 0:
+            producto.und_vitrina -= 1
+        elif producto.und_vitrina == 0 and producto.und_bodega > 0:
+            print("Producto en bodega")
+        else:
+            print("Producto agotado")
